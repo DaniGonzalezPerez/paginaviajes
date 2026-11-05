@@ -175,7 +175,7 @@ a:hover .more i{transform:translateX(8px)}
 .contact__img{background-image:url("https://genteviajera.com/wp-content/uploads/2024/02/puentes.png")}
 .contact__shade{background:rgba(5,23,14,.78)}
 .contact h2{color:#fff;font-size:clamp(2rem,4.4vw,3.2rem);text-transform:uppercase}
-.contact__grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact__grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;max-width:720px;text-align:center;justify-items:center}
 .contact__list{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
 .contact__list a{color:#fff;font-weight:800;text-decoration:none;font-size:1.2rem}
 .contact__list a:hover{color:var(--sun)}

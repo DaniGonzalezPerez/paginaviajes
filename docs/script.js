@@ -18,8 +18,8 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => {
 }, { threshold: .15, rootMargin: '0px 0px -6% 0px' }) : null;
 $$('[data-reveal]').forEach(el => io ? io.observe(el) : el.classList.add('in'));
 
-// Scroll: header, progreso, parallax, botón flotante
-const header = $('.site-header'), bar = $('.progress'), fab = $('.fab');
+// Scroll: cabecera, progreso y parallax
+const header = $('.site-header'), bar = $('.progress');
 const px = $$('[data-parallax]');
 let lastY = 0, ticking = false;
 function onScroll() {
@@ -27,7 +27,6 @@ function onScroll() {
   bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
   header.classList.toggle('solid', y > 40);
   header.classList.toggle('hide', y > lastY && y > 500 && !menu.classList.contains('open'));
-  fab.classList.toggle('show', y > innerHeight * .8);
   lastY = y;
   if (!reduce) px.forEach(el => {
     const r = el.parentElement.getBoundingClientRect();
@@ -39,7 +38,7 @@ function onScroll() {
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
 
-// Tarjetas con inclinación 3D
+// Tarjetas con inclinación 3D y botones magnéticos (solo con ratón)
 if (!reduce && matchMedia('(hover:hover)').matches) {
   $$('.tilt').forEach(card => {
     card.addEventListener('pointermove', e => {
@@ -49,7 +48,6 @@ if (!reduce && matchMedia('(hover:hover)').matches) {
     });
     card.addEventListener('pointerleave', () => card.style.transform = '');
   });
-  // Botones magnéticos
   $$('.magnetic').forEach(b => {
     b.addEventListener('pointermove', e => {
       const r = b.getBoundingClientRect();
@@ -58,13 +56,5 @@ if (!reduce && matchMedia('(hover:hover)').matches) {
     b.addEventListener('pointerleave', () => b.style.transform = '');
   });
 }
-
-// Formulario (solo visual, sin backend)
-$('.form').addEventListener('submit', e => {
-  e.preventDefault();
-  const b = $('button', e.target);
-  b.firstElementChild.textContent = '¡Gracias! Te responderemos pronto';
-  b.disabled = true;
-});
 
 $('#y').textContent = new Date().getFullYear();
