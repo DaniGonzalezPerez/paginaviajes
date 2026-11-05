@@ -218,6 +218,24 @@ a:hover .more i{transform:translateX(8px)}
   .steps::before{display:none}
   .contact__grid,.footer__in{grid-template-columns:1fr}
 }
+@media (max-height:720px){
+  .scroll-cue{display:none}
+}
+@media (max-height:560px) and (orientation:landscape){
+  .hero{height:auto;min-height:0;padding:96px 0 70px}
+  .hero__in{padding-top:0}
+  .hero h1{font-size:clamp(1.8rem,5vw,2.8rem)}
+  .lead{margin-top:12px}
+  .hero__cta{margin-top:20px}
+  .hero__route{display:none}
+  .band{min-height:0}
+  .panel,.panels:hover .panel,.panels .panel:hover{height:300px}
+  .menu{overflow-y:auto;padding:70px 0 20px;justify-content:flex-start;align-items:center;gap:14px}
+}
+@media (min-width:2000px){
+  html{font-size:112.5%}
+  .wrap{width:min(1400px,100% - 64px)}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   [data-reveal],.line span,.lead,.hero__cta{opacity:1!important;transform:none!important}
